@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.ssafy.main.model.dao.community.CommunityGoalDao">
+
+	<insert id="insertGaol" parameterType="CommunityGoal">
+		INSERT INTO communityGoal
+		(communityNo, activityType, activityGoal) VALUES
+		(#{communityNo},
+		#{activityType},
+		#{activityGoal})
+	</insert>
+
+	<select id="getGoal" parameterType="int"
+		resultType="CommunityGoal">
+		SELECT *
+		FROM communityGoal WHERE communityId=#{communityId}
+	</select>
+
+	<delete id="deleteGoal" parameterType="CommunityGoal">
+		DELETE FROM communityGoal
+		WHERE communityNo = #{communityNo} AND activityType=#{activityType}
+	</delete>
+
+	<update id="modifyGoal">
+		UPDATE communityGoal SET activityGoal=#{activityGoal}
+		WHERE
+		communityNo=#{communityNo} AND activityType=#{activityType}
+	</update>
+</mapper>
+

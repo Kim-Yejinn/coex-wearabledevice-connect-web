@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.ssafy.main.model.dao.community.CommunityInfoDao">
+
+	<insert id="insertCommunity" parameterType="CommunityInfo">
+		INSERT INTO
+		communityInfo (communityNo, communityName, communityText) VALUES
+		(#{communityNo},
+		#{communityName}, #{communityText})
+	</insert>
+
+	<select id="getCommunityInfo" parameterType="int"
+		resultType="CommunityInfo">
+		SELECT * FROM communityInfo WHERE
+		communityId=#{communityId}
+	</select>
+
+	<delete id="deleteCommunityInfo" parameterType="int">
+		DELETE FROM
+		communityInfo WHERE communityId=#{communityId}
+	</delete>
+
+	<update id="modifyCommunityInfo" parameterType="CommunityInfo">
+		UPDATE
+		communityInfo WHERE communityId=#{communityId}
+	</update>
+
+</mapper>
+

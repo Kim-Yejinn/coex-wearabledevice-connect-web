@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.ssafy.main.model.dao.community.CommunityListDao">
+
+	<select id="getCommunityId" parameterType="String"
+		resultType="int">
+		SELECT * FROM communityList WHERE userId=#{userId}
+	</select>
+
+	<select id="getUserId" parameterType="int" resultType="String">
+		SELECT *
+		FROM communityList WHERE communityNo=#{communityNo}
+	</select>
+
+	<insert id="insertCommunityList" parameterType="CommunityList">
+		INSERT INTO
+		communityList(userId, communityNo) VALUES (#{userId}, #{communityNo})
+	</insert>
+
+	<delete id="deleteCommunityList" parameterType="int">
+		DELETE FROM
+		communityList
+		WHERE communityNo=#{communityNo}
+	</delete>
+
+</mapper>
+

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.ssafy.main.model.dao.user.UserExerciseListDao">
+
+	<!-- 운동 리스트 -->
+	<insert id="insertUserExerciseList"
+		parameterType="UserExerciseList">
+		INSERT INTO
+		userExerciseList(userId, saveDate,
+		activityParentName, calories,
+		distance, duration ) VALUES(#{userId},
+		#{saveDate}, #{activityParentName},
+		#{calories}, #{distance},
+		#{duration})
+	</insert>
+
+	<update id="updateUserExerciseList"
+		parameterType="UserExerciseList">
+		UPDATE userExerciseList SET calories=#{calories},
+		distance=#{distance}, duration=#{duration} WHERE userId=#{userId}
+		and
+		saveDate=#{saveDate} and activityParentName=#{activityParentName}
+	</update>
+
+	<select id="getConditionExercise"
+		parameterType="UserExerciseList" resultType="UserExerciseList">
+		SELECT * FROM
+		userExerciseList WHERE userId=#{userId} AND saveDate=#{saveDate} AND
+		activityParentName=#{activityParentName}
+	</select>
+
+
+</mapper>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.main.model.dao.user.UserInfoDao">
+
+	<update id="updateUserInfo" parameterType="UserInfo">
+		UPDATE FROM userInfo set name=#{name}, age=#{age}, gender=#{gender},
+		height=#{height}, weight=#{weight}
+		WHERE userId=#{userId}
+	</update>
+
+	<insert id="insertUserInfo" parameterType="UserInfo">
+		INSERT INTO userInfo(userId, name, age, gender, height, weight) VALUES
+		(#{userId}, #{name}, #{age}, #{gender}, #{height}, #{weight})
+	</insert>
+
+	<select id="getUserInfo" parameterType="String"
+		resultType="UserInfo">
+		SELECT * FROM userInfo WHERE userId=#{userId}
+	</select>
+</mapper>

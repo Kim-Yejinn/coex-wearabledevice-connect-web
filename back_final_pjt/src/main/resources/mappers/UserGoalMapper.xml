@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.main.model.dao.user.UserGoalDao">
+
+	<select id="readGoalToday" parameterType="UserGoal"
+		resultType="int">
+		SELECT activityGoal FROM userGoal WHERE userId=#{userId}
+		and activityType=#{activityType} and saveDate=#{saveDate}
+	</select>
+
+	<insert id="writeGoalToday" parameterType="UserGoal">
+		INSERT INTO
+		userGoal(userId, activityType, activityGoal, saveDate) VALUES (#{userId},
+		#{activityType}, #{activityGoal}, #{saveDate})
+	</insert>
+
+	<update id="changeGoalToday" parameterType="UserGoal">
+		UPDATE userGoal SET
+		activityGoal=#{activityGoal} WHERE
+		userId=#{userId} and activityType=#{activityType} 
+	</update>
+
+</mapper>
